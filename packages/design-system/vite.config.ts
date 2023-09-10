@@ -15,5 +15,4 @@ export default defineConfig({
       fileName: "index",
     },
   },
-  ß,
 });
