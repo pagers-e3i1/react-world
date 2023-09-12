@@ -1,12 +1,10 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useMemo } from "react";
 
-const TabsContext = createContext<{
-  activeTab: string | null;
-  onChangeActiveTab: (tabValue: string) => void;
-}>({
-  activeTab: null,
-  onChangeActiveTab: () => {},
-});
+export const TabsContext = createContext<
+  | { activeTab: string | null; onChangeActiveTab: (tabValue: string) => void }
+  | null
+  | undefined
+>(null);
 
 interface TabsContextProviderProps {
   activeTab: string | null;
@@ -20,13 +18,10 @@ export const TabsContextProvider = ({
 }: React.PropsWithChildren<TabsContextProviderProps>) => {
   const contextValue = useMemo(
     () => ({ activeTab, onChangeActiveTab }),
-    [activeTab, onChangeActiveTab]
+    [activeTab, onChangeActiveTab],
   );
 
   return (
     <TabsContext.Provider value={contextValue}>{children}</TabsContext.Provider>
   );
 };
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useTabsContext = () => useContext(TabsContext);

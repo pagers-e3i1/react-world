@@ -1,6 +1,6 @@
+import { useDefaultContext } from "hooks";
 import { TabPanelProps, TabProps, TabsProps } from "./Tabs.types";
-import { tabCustomStyle, tabListStyle } from "./Tabs.css";
-import { TabsContextProvider, useTabsContext } from "contexts";
+import { TabsContext, TabsContextProvider } from "./TabsContext";
 
 /** 기본적인 탭 컴포넌트입니다. */
 export const Tabs = ({
@@ -15,8 +15,7 @@ export const TabList = ({ children }: React.PropsWithChildren) => {
 };
 
 export const Tab = ({ value, children }: React.PropsWithChildren<TabProps>) => {
-  const { activeTab, onChangeActiveTab } = useTabsContext();
-  const activeVariant = activeTab === value ? "active" : "inActive";
+  const { activeTab, onChangeActiveTab } = useDefaultContext(TabsContext);
 
   const handleClick = () => {
     onChangeActiveTab(value);
@@ -40,7 +39,7 @@ export const TabPanel = ({
   children,
   value,
 }: React.PropsWithChildren<TabPanelProps>) => {
-  const { activeTab } = useTabsContext();
+  const { activeTab } = useDefaultContext(TabsContext);
 
   if (activeTab !== value) return null;
 
