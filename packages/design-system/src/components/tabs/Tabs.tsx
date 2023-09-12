@@ -1,4 +1,6 @@
 import { useDefaultContext } from "hooks";
+
+import { tabListStyle, tabStyle } from "./Tabs.css";
 import { TabPanelProps, TabProps, TabsProps } from "./Tabs.types";
 import { TabsContext, TabsContextProvider } from "./TabsContext";
 
@@ -22,7 +24,12 @@ export const Tab = ({ value, children }: React.PropsWithChildren<TabProps>) => {
   };
 
   return (
-    <div className={tabCustomStyle[activeVariant]} onClick={handleClick}>
+    <div
+      className={tabStyle({
+        active: activeTab === value,
+      })}
+      onClick={handleClick}
+    >
       {children}
     </div>
   );
