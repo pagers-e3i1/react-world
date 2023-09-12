@@ -10,6 +10,8 @@ const meta: Meta<typeof Avatar> = {
 
 export default meta;
 
+const AVATAR_URL = 'https://api.realworld.io/images/smiley-cyrus.jpeg'
+
 export const Default = () => {
-  return <Avatar src="https://api.realworld.io/images/smiley-cyrus.jpeg" />
+  return <Avatar src={AVATAR_URL} />
 }
