@@ -1,7 +1,12 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 import { dividerStyle, dividerThemeVars } from "./Divider.css";
-import { DividerProps } from "./Divider.types";
+
+interface DividerProps {
+  direction?: "vertical" | "horizontal";
+  color?: string;
+  thickness?: number;
+}
 
 const Divider = ({
   direction = "horizontal",
@@ -12,7 +17,7 @@ const Divider = ({
     <div
       className={dividerStyle}
       style={assignInlineVars(dividerThemeVars, {
-        color: color,
+        color,
         width: direction === "horizontal" ? "100%" : `${thickness}px`,
         height: direction === "horizontal" ? `${thickness}px` : "100%",
       })}
