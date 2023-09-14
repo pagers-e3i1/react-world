@@ -9,17 +9,17 @@ interface SkeletonProps {
 }
 
 const Skeleton = ({
-  width = 10,
-  height = 10,
-  borderRadius = 50,
+  width = "10px",
+  height = "10px",
+  borderRadius = "50px",
 }: SkeletonProps) => {
   return (
     <div
       className={skeletonStyle}
       style={assignInlineVars(skeletonThemeVars, {
-        width,
-        height,
-        borderRadius,
+        width: String(width),
+        height: String(height),
+        borderRadius: String(borderRadius),
       })}
     />
   );
