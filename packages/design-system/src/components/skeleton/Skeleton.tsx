@@ -1,7 +1,12 @@
 import { assignInlineVars } from "@vanilla-extract/dynamic";
 
 import { skeletonStyle, skeletonThemeVars } from "./Skeleton.css";
-import { SkeletonProps } from "./Skeleton.types";
+
+interface SkeletonProps {
+  width?: React.CSSProperties["width"];
+  height?: React.CSSProperties["height"];
+  borderRadius?: React.CSSProperties["borderRadius"];
+}
 
 const Skeleton = ({
   width = 10,
@@ -12,9 +17,9 @@ const Skeleton = ({
     <div
       className={skeletonStyle}
       style={assignInlineVars(skeletonThemeVars, {
-        width: `${width}px`,
-        height: `${height}px`,
-        borderRadius: `${borderRadius}px`,
+        width,
+        height,
+        borderRadius,
       })}
     />
   );

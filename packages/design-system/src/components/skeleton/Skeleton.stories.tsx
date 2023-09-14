@@ -20,7 +20,7 @@ export const AvatarSkeleton: Story = {
         columnGap: "10px",
       }}
     >
-      <Skeleton width={90} height={90} borderRadius={90} />
+      <Skeleton width="90px" height="90px" borderRadius="90px" />
       <div
         style={{
           display: "flex",
@@ -29,8 +29,8 @@ export const AvatarSkeleton: Story = {
           rowGap: "10px",
         }}
       >
-        <Skeleton width={200} height={30} borderRadius={4} />
-        <Skeleton width={200} height={30} borderRadius={4} />
+        <Skeleton width="200px" height="30px" borderRadius="4px" />
+        <Skeleton width="200px" height="30px" borderRadius="4px" />
       </div>
     </div>
   ),
