@@ -22,7 +22,7 @@ export const HorizontalDivider: Story = {
   args: {
     direction: "horizontal",
     color: '#E5E5E5',
-    thick : 2,
+    thickness : 2,
   },
 };
 
@@ -30,6 +30,6 @@ export const VerticalDivider: Story = {
   args: {
     direction: "vertical",
     color: '#E5E5E5',
-    thick : 2,
+    thickness : 2,
   },
 };
