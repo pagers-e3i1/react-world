@@ -1,11 +1,10 @@
-import React from "react";
+import { compositeClassNames } from "utils/compositeClassNames";
 import {
   pageLink,
   pageLinkActive,
   pageLinkWrapper,
   paginationList,
 } from "./style.css";
-import { compositeClassNames } from "utils/compositeClassNames";
 
 interface PaginationProps {
   currentPage: number;
@@ -17,7 +16,7 @@ interface PaginationProps {
   pageLinkClassName?: string;
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+const Pagination = ({
   currentPage = 1,
   itemsPerPage,
   totalItems,
@@ -25,19 +24,19 @@ const Pagination: React.FC<PaginationProps> = ({
   paginationListClassName,
   pageLinkWrapperClassName,
   pageLinkClassName,
-}) => {
+}: PaginationProps) => {
   const paginationListClassNames = compositeClassNames(
     [paginationList],
-    paginationListClassName
+    paginationListClassName,
   );
   const pageLinkWrapperClassNames = compositeClassNames(
     [pageLinkWrapper],
-    pageLinkWrapperClassName
+    pageLinkWrapperClassName,
   );
   const getPageLinkClassNames = (number: number) =>
     compositeClassNames(
       [pageLink, currentPage === number ? pageLinkActive : ""],
-      pageLinkClassName
+      pageLinkClassName,
     );
 
   const totalPages = Math.ceil(totalItems / itemsPerPage);

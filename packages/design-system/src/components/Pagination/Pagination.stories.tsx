@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { usePagination, Pagination } from ".";
+import { Pagination, usePagination } from ".";
 
 const meta: Meta<typeof Pagination> = {
   title: "Components/Pagination",
@@ -16,7 +16,7 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
-  render: (args) => {
+  render: (args: Parameters<typeof Pagination>[0]) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { currentPage, onCurrenPageChange } = usePagination(1);
     return (
