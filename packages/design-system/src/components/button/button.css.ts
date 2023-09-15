@@ -96,6 +96,9 @@ export const buttonContained = style({
       backgroundColor: themeVars.colors.hoverColor,
       borderColor: themeVars.colors.hoverColor,
     },
+    [`&:active`]: {
+      transform: "scale(0.98)",
+    },
   },
 });
 
@@ -110,6 +113,9 @@ export const buttonOutlined = style({
       backgroundColor: themeVars.colors.color,
       borderColor: themeVars.colors.color,
     },
+    [`&:active`]: {
+      transform: "scale(0.98)",
+    },
   },
 });
 
@@ -120,6 +126,9 @@ export const buttonLink = style({
   selectors: {
     [`&:hover`]: {
       textDecoration: "underline",
+    },
+    [`&:active`]: {
+      transform: "scale(0.98)",
     },
   },
 });
