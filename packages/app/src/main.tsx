@@ -13,13 +13,13 @@ async function workerPrepare() {
   return;
 }
 
-function renderWithWorker(dom: JSX.Element) {
+function reactDOMrenderWithWorker(dom: JSX.Element) {
   workerPrepare().then(() => {
     ReactDOM.createRoot(document.getElementById("root")!).render(dom);
   });
 }
 
-renderWithWorker(
+reactDOMrenderWithWorker(
   <React.StrictMode>
     <Provider>
       <SWRConfig value={swrOptions}>
