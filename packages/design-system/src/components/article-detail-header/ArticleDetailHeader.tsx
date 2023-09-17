@@ -31,8 +31,9 @@ const ArticleDetailHeader = ({
   favoritesCount,
   author,
 }: ArticleDetailHeaderProps) => {
+  const { username, image, following } = author;
   const [isFavorited, setIsFavorited] = useState(favorited);
-  const [isFollowing, setIsFollowing] = useState(author.following);
+  const [isFollowing, setIsFollowing] = useState(following);
   const currentFavoritesCount = favoritesCount + Number(isFavorited);
 
   return (
@@ -40,33 +41,35 @@ const ArticleDetailHeader = ({
       <h1 className={articleHeaderTitle}>{title}</h1>
       <div className={articleMeta}>
         <div className={authorWrapper}>
-          <a href={`#@${author.username}`}>
-            <Avatar src={author.image} width={30} height={30} />
+          <a href={`#@${username}`}>
+            <Avatar src={image} width={30} height={30} />
           </a>
           <div className={authorInfo}>
-            <a href={`#@${author.username}`} className={authorUserName}>
-              {author.username}
+            <a href={`#@${username}`} className={authorUserName}>
+              {username}
             </a>
             <span>{getFormattedDate(updatedAt)}</span>
           </div>
         </div>
 
         <div className={articleButtons}>
-          <div
+          <button
+            data-testid="FollowingButton"
             onClick={() => {
               setIsFollowing(!isFollowing);
             }}
           >
-            {isFollowing ? "Unfollow" : "Follow"} {author.username}
-          </div>
-          <div
+            {isFollowing ? "Unfollow" : "Follow"} {username}
+          </button>
+          <button
+            data-testid="FavoriteButton"
             onClick={() => {
               setIsFavorited(!isFavorited);
             }}
           >
             {isFavorited ? "Unfavorite" : "Favorite"} Article (
             {currentFavoritesCount})
-          </div>
+          </button>
         </div>
       </div>
     </div>
