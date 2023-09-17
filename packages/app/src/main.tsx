@@ -1,6 +1,9 @@
+import { swrOptions } from "apis/config/swr/options.ts";
+import { Provider } from "jotai";
 import { initMockApi } from "mocks/workers";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { SWRConfig } from "swr";
 
 import App from "./App.tsx";
 import { isDevEnv } from "./constants/env";
@@ -18,6 +21,10 @@ function renderWithWorker(dom: JSX.Element) {
 
 renderWithWorker(
   <React.StrictMode>
-    <App />
+    <Provider>
+      <SWRConfig value={swrOptions}>
+        <App />
+      </SWRConfig>
+    </Provider>
   </React.StrictMode>,
 );
