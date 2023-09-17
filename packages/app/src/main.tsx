@@ -1,5 +1,3 @@
-import "./index.css";
-
 import { initMockApi } from "mocks/workers";
 import React from "react";
 import ReactDOM from "react-dom/client";
