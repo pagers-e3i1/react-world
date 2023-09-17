@@ -1,4 +1,2 @@
-import Pagination from "./Pagination";
-import usePagination from "./usePagination";
-
-export { Pagination, usePagination };
+export { default as Pagination } from "./Pagination";
+export { default as usePagination } from "./usePagination";
