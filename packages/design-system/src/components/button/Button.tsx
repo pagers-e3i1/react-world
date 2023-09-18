@@ -7,7 +7,7 @@ import * as ButtonStyle from "./button.css";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   backgroundColor?: string;
   block?: boolean;
-  colors?: string;
+  color?: string;
   icon?: React.ReactNode;
   size?: "xs" | "sm" | "md" | "lg";
   variant?: "contained" | "outlined" | "link";
@@ -21,7 +21,7 @@ export const Button = ({
   variant = "contained",
   icon,
   children,
-  colors,
+  color,
   backgroundColor,
   ...props
 }: PropsWithChildren<ButtonProps>) => {
@@ -70,7 +70,7 @@ export const Button = ({
         disabled={disabled}
         style={assignInlineVars(ButtonStyle.themeVars, {
           colors: {
-            color: colors || initialColor!,
+            color: color || initialColor!,
             backgroundColor: backgroundColor || initialBackgroundColor!,
             hoverColor: hoverColor || initialHoverColor!,
           },
