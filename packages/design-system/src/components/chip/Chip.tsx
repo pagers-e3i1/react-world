@@ -13,16 +13,14 @@ export const Chip = ({
   icon,
 }: PropsWithChildren<ChipProps>) => {
   return (
-    <>
-      <span
-        className={[
-          ChipStyle.chipContainer,
-          variant === "contained" ? ChipStyle.contained : ChipStyle.outlined,
-        ].join(" ")}
-      >
-        {icon}
-        {children}
-      </span>
-    </>
+    <span
+      className={[
+        ChipStyle.chipContainer,
+        variant === "contained" ? ChipStyle.contained : ChipStyle.outlined,
+      ].join(" ")}
+    >
+      {icon}
+      {children}
+    </span>
   );
 };
