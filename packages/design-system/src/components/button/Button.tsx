@@ -2,7 +2,7 @@ import { assignInlineVars } from "@vanilla-extract/dynamic";
 import type { PropsWithChildren } from "react";
 import { darkenColor } from "utils/darkenColor";
 
-import * as S from "./button.css";
+import * as ButtonStyle from "./button.css";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   backgroundColor?: string;
@@ -25,32 +25,11 @@ export const Button = ({
   backgroundColor,
   ...props
 }: PropsWithChildren<ButtonProps>) => {
-  const baseClasses = [S.button];
-  const typeClasses = {
-    contained: S.buttonContained,
-    outlined: S.buttonOutlined,
-    link: S.buttonLink,
-  };
-
-  const sizeClasses = {
-    xs: S.buttonXs,
-    sm: S.buttonSm,
-    md: S.buttonMd,
-    lg: S.buttonLg,
-  };
-
-  const classes = [
-    ...baseClasses,
-    typeClasses[variant],
-    sizeClasses[size],
-    block && S.buttonWFull,
-  ].filter(Boolean);
-
   const hoverColor = backgroundColor ? darkenColor(backgroundColor) : undefined;
 
-  let initialColor;
-  let initialBackgroundColor;
-  let initialHoverColor;
+  let initialColor: string;
+  let initialBackgroundColor: string;
+  let initialHoverColor: string;
 
   switch (variant) {
     case "contained": {
@@ -75,12 +54,21 @@ export const Button = ({
   }
 
   return (
-    <span className={[S.buttonContainer, block && S.buttonWFull].join(" ")}>
+    <span
+      className={[
+        ButtonStyle.buttonContainer,
+        block && ButtonStyle.buttonWFull,
+      ].join(" ")}
+    >
       <button
-        className={classes.join(" ")}
+        className={ButtonStyle.button({
+          size,
+          variant,
+          block,
+        })}
         onClick={onClick}
         disabled={disabled}
-        style={assignInlineVars(S.themeVars, {
+        style={assignInlineVars(ButtonStyle.themeVars, {
           colors: {
             color: colors || initialColor!,
             backgroundColor: backgroundColor || initialBackgroundColor!,
