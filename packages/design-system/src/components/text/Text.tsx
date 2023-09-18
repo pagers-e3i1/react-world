@@ -1,42 +1,33 @@
-import { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
 
 import { FontWeightType, TagType, TypographyType } from "./index.type";
+import { text } from "./Text.css";
 
 interface TextProps {
   tag?: TagType;
-  children?: ReactNode;
   typography?: TypographyType;
   fontWeight?: FontWeightType;
   color?: string;
   style?: React.CSSProperties;
-  className?: string;
 }
-
 export const Text = ({
   tag = "span",
   children,
-  typography,
-  fontWeight,
+  typography = "body",
+  fontWeight = "regular",
   color,
   style,
-  className,
-}: TextProps) => {
+}: PropsWithChildren<TextProps>) => {
   const CustomTag = `${tag}` as keyof JSX.IntrinsicElements;
+
+  const computedClass = text({
+    typography,
+    fontWeight,
+  });
+
   return (
-    <CustomTag
-      style={{ color: color, ...style }}
-      className={[
-        {
-          typography: typography || "body",
-          fontWeight: fontWeight || "regular",
-        },
-        ,
-        className,
-      ].join(" ")}
-    >
+    <CustomTag style={{ color: color, ...style }} className={computedClass}>
       {children}
     </CustomTag>
   );
 };
-
-export default Text;

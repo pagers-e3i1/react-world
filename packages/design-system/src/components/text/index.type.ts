@@ -26,6 +26,6 @@ export type TypographyType =
   | "bannerTitle"
   | "bannerDetail"
   | "date"
-  | "title   "
+  | "title"
   | "content"
   | "article";
