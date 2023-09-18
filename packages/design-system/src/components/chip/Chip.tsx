@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 
-import * as S from "./chip.css";
+import * as ChipStyle from "./chip.css";
 
 interface ChipProps {
   variant: "contained" | "outlined";
@@ -16,8 +16,8 @@ export const Chip = ({
     <>
       <span
         className={[
-          S.chipContainer,
-          variant === "contained" ? S.contained : S.outlined,
+          ChipStyle.chipContainer,
+          variant === "contained" ? ChipStyle.contained : ChipStyle.outlined,
         ].join(" ")}
       >
         {icon}
