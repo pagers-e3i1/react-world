@@ -14,12 +14,12 @@
   "dependencies": {
     "@vanilla-extract/css": "^1.13.0",
     "axios": "^1.5.0",
+    "design-system": "workspace:^",
     "jotai": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
-    "swr": "^2.2.2",
-    "design-system": "workspace:^"
+    "swr": "^2.2.2"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.4.2",
@@ -35,6 +35,7 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "@vanilla-extract/vite-plugin": "^3.9.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
