@@ -2,6 +2,7 @@ export * from "./avatar";
 export * from "./button";
 export * from "./chip";
 export * from "./divider";
+export * from "./icons";
 export * from "./Pagination";
 export * from "./skeleton";
 export * from "./tabs";
