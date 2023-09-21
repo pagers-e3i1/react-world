@@ -8,12 +8,24 @@ import {
   tagContainerStyle,
 } from "./Editor.css";
 
-export const Editor = () => {
-  const [title, setTitle] = useState("");
-  const [about, setAbout] = useState("");
-  const [article, setArticle] = useState("");
+type ArticleType = {
+  title: string;
+  about: string;
+  article: string;
+  tags: string[];
+};
+
+interface EditorProps {
+  defaultValue?: ArticleType;
+  onSubmit?: (value: ArticleType) => void;
+}
+
+export const Editor = ({ defaultValue, onSubmit = () => {} }: EditorProps) => {
+  const [title, setTitle] = useState(defaultValue?.title ?? "");
+  const [about, setAbout] = useState(defaultValue?.about ?? "");
+  const [article, setArticle] = useState(defaultValue?.article ?? "");
   const [tagInput, setTagInput] = useState("");
-  const [tagList, setTagList] = useState<string[]>([]);
+  const [tagList, setTagList] = useState<string[]>(defaultValue?.tags ?? []);
 
   const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -39,10 +51,25 @@ export const Editor = () => {
     }
   };
 
+  const handlePublish = () => {
+    if (title !== "" || about !== "" || article !== "") {
+      alert("Please fill out all fields");
+      return;
+    }
+    onSubmit({
+      title,
+      about,
+      article,
+      tags: tagList,
+    });
+  };
+
   // case 1. 입력 후 엔터를 누르면 input이 사라지고, tag가 추가된다.
   // case 2. tag를 클릭하면 삭제된다.
   // case 3. 중복된 tag는 추가되지 않고, input도 비워지지 않는다.
   // case 4. 입력 후 엔터를 누르면 하나의 tag만 추가되는지 테스트
+  // case 6. Publish Article을 누르면 채워지지 않은 요소가 있으면 alert를 띄운다.
+  // case 7. Publish Article을 누르면 onSubmit 함수가 실행된다.
 
   return (
     <div className={editorContainerStyle}>
@@ -86,7 +113,9 @@ export const Editor = () => {
         </div>
       </div>
       <div className={buttonContainerStyle}>
-        <Button size="md">Publish Article</Button>
+        <Button size="md" onClick={handlePublish}>
+          Publish Article
+        </Button>
       </div>
     </div>
   );
