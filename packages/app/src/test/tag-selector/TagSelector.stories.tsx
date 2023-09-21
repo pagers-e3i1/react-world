@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import TagSelector from "./TagSelector";
+import { TagSelector } from "./TagSelector";
 
 const meta: Meta<typeof TagSelector> = {
-  title: "components/TagSelector",
+  title: "app/TagSelector",
   tags: ["autodocs"],
   component: TagSelector,
 };
@@ -11,6 +11,6 @@ const meta: Meta<typeof TagSelector> = {
 export default meta;
 type Story = StoryObj<typeof TagSelector>;
 
-export const Basic: Story = {
+export const Default: Story = {
   args: {},
 };

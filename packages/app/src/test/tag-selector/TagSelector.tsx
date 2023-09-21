@@ -1,12 +1,9 @@
-import { Chip } from "components/chip/Chip";
-import { Text } from "components/text/Text";
-import TextInput from "components/text-input/TextInput";
-import { XDeleteIcon } from "icons";
+import { Chip, Text, TextInput, XDeleteIcon } from "design-system";
 import { useState } from "react";
 
 import { tagListStyle } from "./TagSelector.css";
 
-const TagSelector = () => {
+export const TagSelector = () => {
   const [tagInput, setTagInput] = useState("");
   const [tagList, setTagList] = useState<string[]>([]);
 
@@ -51,5 +48,3 @@ const TagSelector = () => {
     </>
   );
 };
-
-export default TagSelector;
